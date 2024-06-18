@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import '../styles/Navbar.css'
+import './styles/Navbar.css'
 
 
 const Navbar = () => {
@@ -10,18 +10,18 @@ const Navbar = () => {
 
     return (
         <nav>
-            <div>
+            <div className='Navbar_layout'>
                 <h1>Chill Surf</h1>
-                <div>
+                <div className='Navbar_element'>
                     <a href="/">Home</a>
                     <a href="/about">About</a>
                     <a href="/dashboard">Dashboard</a>
-                </div>
-                <div className="menu" onClick={toggleMenu}>
+                    <div className="menu" onClick={toggleMenu}>
                     <image src="https://img.icons8.com/ios/50/000000/menu--v1.png" alt="menu"/>
-                </div>
-            
             </div>
+                </div>            
+            </div>
+            
 
         </nav>
     )
