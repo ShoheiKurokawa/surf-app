@@ -1,0 +1,88 @@
+/* Parent container to center the signup box */
+.container {
+    display: flex;
+    padding-top: 2.5%;
+    align-items: start;
+    justify-content: center;
+    height: 100vh; /* Full viewport height */
+    background-color: #f1f1f1; /* Optional: background color */
+}
+
+/* Signup box styling */
+.field {
+    margin-bottom: 20px;
+    width: 50%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #fff; /* Background color of the signup box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: box shadow for better appearance */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+.title {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.inputLabel {
+    text-align: left;
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.inputBox{
+    width: 75%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #f1f1f1; /* Background color of the input box */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: box shadow for better appearance */
+    border-radius: 8px; /* Optional: rounded corners */
+}
+
+/* Error label styling */
+.errorLabel {
+    color: red;
+    font-size: 12px;
+    text-align: center;
+}
+
+.inputLogin{
+    width: 75%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #FF5758; /* Background color of the input button */
+    color: white; /* Text color of the input button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: box shadow for better appearance */
+    border-radius: 20px; /* Optional: rounded corners */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.inputSignup{
+    width: 75%;
+    padding: 10px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #0075FF; /* Background color of the input button */
+    color: white; /* Text color of the input button */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: box shadow for better appearance */
+    border-radius: 20px; /* Optional: rounded corners */
+    font-weight: bold;
+    cursor: pointer;
+}
