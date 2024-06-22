@@ -1,0 +1,69 @@
+/* Home component styling */
+.home-cover{
+    background-color: #007bff;
+    color: white;
+    padding: 20px;
+    padding-top: 50px;
+    text-align: center;
+
+}
+
+.home-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.home {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 50px;
+    background-color: #fafafa;
+}
+
+.home-content {
+    width: 50%;
+    text-align: center;
+    padding: 20px;
+    color: black;
+}
+
+.home-button-container {
+    margin-top: 20px;
+}
+
+.home-button {
+    padding: 10px 20px;
+    margin: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.home-button:hover {
+    background-color: #0056b3;
+}
+  
+
+.home-image-container {
+    width: 50%;
+    height: 60vh;
+    overflow: hidden;
+    position: relative;
+}
+  
+/* Image styling */
+.home-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+  

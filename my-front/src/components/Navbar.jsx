@@ -28,13 +28,22 @@ const Navbar = () => {
         window.location.href = '/login'
     };
 
+    const handleAboutClick = (e) => {
+        e.preventDefault();
+        window.location.href = '/#about';
+        setTimeout(() => {
+          document.getElementById('about-section').scrollIntoView({ behavior: 'smooth' });
+        }, 100);
+      };
+    
+
     return (
         <nav>
             <div className='Navbar_layout'>
                 <h1>Chill Surf</h1>
                 <div className='Navbar_element'>
                     <a href="/">Home</a>
-                    <a href="/about">About</a>
+                    <a href="/#about" onClick={handleAboutClick}>About</a>
                     {isLoggedIn? (<a href="/dashboard">Dashboard</a>) : null}
                     <div className="menu" onClick={toggleMenu}>
                         {isLoggedIn? (<img className='loggedIn' src={loggedIn} alt="menu"/>)

@@ -8,12 +8,13 @@ const Login = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const link = 'http://localhost:3000/login';
 
     const onButtonClick = () => {
         validateEmail(email);
         validatePassword(password);
         if (emailError === '' && passwordError === '') {
-            axios.post('http://localhost:3000/login', { email, password })
+            axios.post(link, { email, password })
                 .then((res) => {
                     console.log(res);
                     if (res.data.token) {
