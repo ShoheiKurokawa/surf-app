@@ -12,46 +12,55 @@ const Signup = () => {
 
     const onButtonClick = () => {
         validateEmail(email);
-        validatePassword(password); 
+        validatePassword(password);
         validateRepeatPassword(repeatPassword);
-        if(emailError === '' && passwordError === '' && repeatPasswordError === ''){
-            alert('Signup successful');
-            axios.post('http://localhost:3000/signup', {email, password})
-            .then((res) => {
-                console.log(res);
-                window.location.href = '/login';
-            })
-            .catch((err) => {
-                console.log(err);
-            })
+
+        // Check for errors after validation
+        if (validateEmail(email) && validatePassword(password) && validateRepeatPassword(repeatPassword)) {
+            axios.post('http://localhost:3000/auth/register', { email, password })
+                .then((res) => {
+                    alert('Signup successful');
+                    console.log(res);
+                    window.location.href = '/login';
+                })
+                .catch((err) => {
+                    console.log(err);
+                    alert('Signup failed');
+                });
         } else {
             alert('Invalid email or password');
         }
     }
 
     const validateEmail = (email) => {
-        if(!email.includes('@')){
+        if (!email.includes('@')) {
             setEmailError('Invalid email');
-        }else{
+            return false;
+        } else {
             setEmailError('');
+            return true;
         }
-    }
+    };
 
     const validatePassword = (password) => {
-        if(password.length < 8){
+        if (password.length < 8) {
             setPasswordError('Password must be at least 8 characters long');
-        }else{
+            return false;
+        } else {
             setPasswordError('');
+            return true;
         }
-    }
+    };
 
     const validateRepeatPassword = (repeatPassword) => {
-        if(repeatPassword !== password){
+        if (repeatPassword !== password) {
             setRepeatPasswordError('Passwords do not match');
-        }else{
+            return false;
+        } else {
             setRepeatPasswordError('');
+            return true;
         }
-    }
+    };
 
 
   return (
@@ -64,7 +73,7 @@ const Signup = () => {
                 <label className='inputLabel' for="email"><b>Email</b></label>
                 <br />
                 <input 
-                    type="text" 
+                    type="email" 
                     placeholder="Enter Your Email" 
                     value={email} 
                     onChange={(e) => setEmail(e.target.value)}

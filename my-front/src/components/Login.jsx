@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './styles/SignInOut.css'
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
     const [email, setEmail] = useState('');
@@ -8,7 +9,8 @@ const Login = () => {
     const [emailError, setEmailError] = useState('');
     const [passwordError, setPasswordError] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const link = 'http://localhost:3000/login';
+    const link = 'http://localhost:3000/auth/login';
+    const navigate = useNavigate(); 
 
     const onButtonClick = () => {
         validateEmail(email);
@@ -20,10 +22,9 @@ const Login = () => {
                     if (res.data.token) {
                         localStorage.setItem('token', res.data.token);
                         setIsLoggedIn(true);
-                        alert('Login successful');
-                        if(isLoggedIn){
-                            window.location.href = '/dashboard';
-                        }
+                        // window.location.href = '/dashboard';
+                        navigate('/dashboard');
+                        window.dispatchEvent(new Event('storage'));
                     }
                 })
                 .catch((err) => {
@@ -62,7 +63,7 @@ const Login = () => {
             <label className='inputLabel' for="email"><b>Email</b></label>
             <br />
             <input 
-                type="text" 
+                type="email"
                 placeholder="Enter Your Email" 
                 value={email} 
                 onChange={(e) => setEmail(e.target.value)}

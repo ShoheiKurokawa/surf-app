@@ -2,7 +2,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 0 0px;
     background-color: #333;
     color: white;
     position: fixed; /* Fix the navbar at the top */
@@ -31,30 +31,55 @@
 .menu {
     display: flex;
     align-items: center;
-}
-
-.logIn {
-    display: flex;
-    align-items: center;
-    width: 90px;
-    height: 90px;
     cursor: pointer;
-    margin-left: 5px;
+    position: relative; /* Relative position to align dropdown menu */
 }
 
-.signIn {
-    display: flex;
-    align-items: center;
-    width: 90px;
-    height: 90px;
+.logIn, .signIn {
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     margin-left: 5px;
 }
 
 .loggedIn {
-    display: flex;
-    align-items: center;
     width: 50px;
     height: 50px;
+    cursor: pointer;
+    margin-left: 5px;
 }
-  
+
+.dropdown {
+    position: absolute;
+    top: 60px; /* Adjust based on your navbar height */
+    right: 0;
+    background-color: #333;
+    border: 1px solid #555;
+    border-radius: 5px;
+    list-style: none;
+    padding: 0 0;
+    margin: 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+}
+
+.dropdown li {
+    padding: 10px 20px;
+}
+
+.dropdown li a, .dropdown li button {
+    color: white;
+    text-decoration: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    font-size: 16px; /* Same font size */
+    padding: 20px 20px; /* Same padding */
+    display: block; /* Ensure full width clickable area */
+}
+
+.dropdown li a:hover, .dropdown li button:hover {
+    background-color: #555;
+}

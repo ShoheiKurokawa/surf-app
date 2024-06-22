@@ -1,7 +1,7 @@
 /* Parent container to center the signup box */
 .container {
+    padding-top: 150px;
     display: flex;
-    padding-top: 2.5%;
     align-items: start;
     justify-content: center;
     height: 100vh; /* Full viewport height */
