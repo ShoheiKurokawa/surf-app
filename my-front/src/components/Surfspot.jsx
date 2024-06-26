@@ -27,6 +27,7 @@ const Surfspot = () => {
               const response = await axios.get(favoritesLink, {
                 headers: { Authorization: `${localStorage.getItem('token')}` }
               });
+              console.log("Fetched data:", response.data);
               setFavorites(response.data);
             } catch (error) {
               console.error("There was an error fetching the favorites!", error);
@@ -38,18 +39,22 @@ const Surfspot = () => {
     }, []);
 
     const isFavorite = (spotId) => {
-        return favorites.some(favorite => favorite.surf_spot_id === spotId);
+        return favorites.some(favorite => favorite.surf_spot_id._id === spotId);
     };
-    
+
     const handleFavorite = async (spotId) => {
         try {
-            const response = await axios.post(favoritesLink, { surf_spot_id: spotId }, {
-              headers: { Authorization: `${localStorage.getItem('token')}` }
-            });
-            setFavorites([...favorites, response.data]);
-          } catch (error) {
-            console.error("There was an error adding the favorite spot!", error);
-          }
+          const response = await axios.post(favoritesLink, { surf_spot_id: spotId }, {
+            headers: { Authorization: `${localStorage.getItem('token')}` }
+          });
+          console.log("Added to favorites:", response.data);
+          setFavorites((prevFavorites) => [...prevFavorites, {
+            ...response.data,
+            surf_spot_id: { _id: response.data.surf_spot_id }
+        }]);
+        } catch (error) {
+          console.error("There was an error adding the favorite spot!", error);
+        }
     };
 
     return (
@@ -74,6 +79,13 @@ const Surfspot = () => {
                 <td>{spot.description}</td>
                 <td>{spot.location}</td>
                 <td><img src={spot.image} alt={spot.name} style={{ width: '100px' }} /></td>
+                <td>
+                {isFavorite(spot._id) ? (
+                  <button disabled>Favorite</button>
+                ) : (
+                  <button onClick={() => handleFavorite(spot._id)}>Add to Favorites</button>
+                )}
+              </td>
               </tr>
             ))}
           </tbody>

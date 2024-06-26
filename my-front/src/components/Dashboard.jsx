@@ -6,7 +6,7 @@ const Dashboard = () => {
   const [userDetails, setUserDetails] = useState(null);
   const [favorites, setFavorites] = useState([]);
   const userLink = 'http://localhost:3000/auth/users';
-  const surfspotLink = 'http://localhost:3000/favorites';
+  const favoritesLink = 'http://localhost:3000/favorites';
 
   useEffect(() => {
     const fetchUserDetails = async () => {
@@ -22,7 +22,7 @@ const Dashboard = () => {
 
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get(surfspotLink, {
+        const response = await axios.get(favoritesLink, {
           headers: { Authorization: `${localStorage.getItem('token')}` }
         });
         setFavorites(response.data);
@@ -34,6 +34,17 @@ const Dashboard = () => {
     fetchUserDetails();
     fetchFavorites();
   }, []);
+
+  const handleDeleteFavorite = async (favId) => {
+    try {
+      await axios.delete(`${favoritesLink}/${favId}`, {
+        headers: { Authorization: `${localStorage.getItem('token')}` }
+      });
+      setFavorites(favorites.filter(favorite => favorite._id !== favId));
+    } catch (error) {
+      console.error("There was an error deleting the favorite spot!", error);
+    }
+  };
 
   return (
     <div className="dashboard-container">
@@ -55,6 +66,7 @@ const Dashboard = () => {
             <th>Description</th>
             <th>Location</th>
             <th>Image</th>
+            <th>Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -67,6 +79,7 @@ const Dashboard = () => {
                 <td>{fav.surf_spot_id.description}</td>
                 <td>{fav.surf_spot_id.location}</td>
                 <td><img src={fav.surf_spot_id.image} alt={fav.surf_spot_id.name} /></td>
+                <td><button onClick={() => handleDeleteFavorite(fav._id)}>Delete</button></td>
               </tr>
             )
           ))}

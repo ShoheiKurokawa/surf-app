@@ -8,8 +8,7 @@ import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
 import FavSpot from './components/FavSpot';
 import Surfspot from './components/Surfspot';
-
-
+import Spot from './components/Spot';
 
 function App() {
   return (
@@ -23,6 +22,7 @@ function App() {
               <Route path="/dashboard" element={<Dashboard />} />
               <Route path="/favorites/:id" element={<FavSpot />} />
               <Route path="/surfspots" element={<Surfspot />} />
+              <Route path="/surfspots/:id" element={<Spot />} />
             </Routes>
       <Footer/>
     </Router>
