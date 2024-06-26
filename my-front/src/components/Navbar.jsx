@@ -58,6 +58,7 @@ const Navbar = () => {
         <div className='Navbar_element'>
           <a href="/">Home</a>
           <a href="/#about" onClick={handleAboutClick}>About</a>
+          {isLoggedIn && <a href="/surfspots">Surfspot</a>}
           {isLoggedIn && <a href="/dashboard">Dashboard</a>}
           <div className="menu" ref={menuRef} onClick={toggleMenu}>
             {isLoggedIn ? (

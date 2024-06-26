@@ -61,7 +61,9 @@ const Dashboard = () => {
           {favorites.map(fav => (
             fav.surf_spot_id && (
               <tr key={fav._id}>
-                <td>{fav.surf_spot_id.name}</td>
+                <td>
+                  <a href={`/favorites/${fav.surf_spot_id._id}`}>{fav.surf_spot_id.name}</a>
+                </td>
                 <td>{fav.surf_spot_id.description}</td>
                 <td>{fav.surf_spot_id.location}</td>
                 <td><img src={fav.surf_spot_id.image} alt={fav.surf_spot_id.name} /></td>

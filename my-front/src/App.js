@@ -6,6 +6,8 @@ import Login from './components/Login';
 import Home from './components/Home';
 import Footer from './components/Footer';
 import Dashboard from './components/Dashboard';
+import FavSpot from './components/FavSpot';
+import Surfspot from './components/Surfspot';
 
 
 
@@ -19,6 +21,8 @@ function App() {
               <Route path="/signup" element={<Signup />} />
               <Route path="/about" element={<Home />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/favorites/:id" element={<FavSpot />} />
+              <Route path="/surfspots" element={<Surfspot />} />
             </Routes>
       <Footer/>
     </Router>
